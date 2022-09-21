@@ -8,7 +8,7 @@ import gzip
 import sys
 import argparse
 import json
-import numpy as np 
+import numpy as np
 import copy
 from collections import defaultdict
 
@@ -16,7 +16,7 @@ def multiple_simulations(infosys_specs, times=1):
     # baseline:  mu=0.5, alpha=15, beta=0.01, gamma=0.001, phi=1, theta=1
     metrics = ['quality', 'diversity','discriminative_pow']
     n_measures = defaultdict(lambda: [])
-    
+
     print(f"Run simulation {times} times..")
     for _ in range(times):
 
@@ -35,7 +35,7 @@ def multiple_simulations(infosys_specs, times=1):
             print(e)
 
     print(f"average quality for follower network: {np.mean(np.array(n_measures['quality']))} pm {np.std(np.array(n_measures['quality']))}")
-    
+
     results = {metric: n_measures[metric] for metric in metrics}
 
     #return a short & long (more details) version of measurements
@@ -74,7 +74,7 @@ def main(args):
         action="store", dest="mode", type=str, required=True,
         help="mode of implementation ['igraph', 'nx', 'infosys']")
     parser.add_argument('--times',
-        action="store", dest="times", type=str, required=False,
+        action="store", dest="times", type=str, required=True,
         help="Number of times to run simulation")
 
 
@@ -113,4 +113,3 @@ def main(args):
 
 
 if __name__ == "__main__": main(sys.argv[1:])
-

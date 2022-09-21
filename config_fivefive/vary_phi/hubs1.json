@@ -1,0 +1,1 @@
+{"phi": 2, "targeting_criterion": "hubs", "beta": 0.05, "gamma": 0.05, "verbose": false, "human_network": "follower_network.gml", "trackmeme": true, "epsilon": 0.0001, "rho": 0.8, "mu": 0.5, "alpha": 15, "theta": 5}

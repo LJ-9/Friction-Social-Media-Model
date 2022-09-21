@@ -1,0 +1,34 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+run_simulation        1              1              1
+total                 2              1              1
+
+Select jobs to execute...
+
+[Tue Sep 20 22:34:23 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, data/config.json
+    output: result/results.json, result/tracking.json.gz
+    jobid: 1
+    reason: Code has changed since last execution
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+[Tue Sep 20 22:34:23 2022]
+Error in rule run_simulation:
+    jobid: 1
+    output: result/results.json, result/tracking.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o result/results.json -v result/tracking.json.gz --config data/config.json --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2022-09-20T223422.310009.snakemake.log

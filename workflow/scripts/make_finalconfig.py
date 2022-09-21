@@ -3,16 +3,16 @@ import os
 print(os.getcwd())
 import infosys.utils as utils
 import infosys.final_configs as configs
-import numpy as np 
-import os 
-import json 
+import numpy as np
+import os
+import json
 
 def make_exps(saving_dir, default_net_config, default_infosys_config):
     all_exps = {}
 
     # Varying beta gamma target: (use to init net)
     all_exps["vary_network"] = {}
-    
+
     for idx, beta in enumerate(configs.BETA):
         for jdx,gamma in enumerate(configs.GAMMA):
             for kdx,target in enumerate(configs.TARGETING):
@@ -28,7 +28,7 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
     assert len(all_exps["vary_network"]) == len(configs.BETA) * len(configs.GAMMA)*len(configs.TARGETING)
 
 
-    #vary beta & gamma, keep constant targeting strategy 
+    #vary beta & gamma, keep constant targeting strategy
     all_exps["vary_betagamma"] = {}
     for idx,beta in enumerate(configs.BETA):
         for jdx,gamma in enumerate(configs.GAMMA):
@@ -37,7 +37,7 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
 
             config_name = f'{idx}{jdx}'
             all_exps["vary_betagamma"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_betagamma'):
                 fp = os.path.join(saving_dir, 'vary_betagamma', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -52,7 +52,7 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
 
             config_name = f'{idx}{jdx}'
             all_exps["vary_thetaphi"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_thetaphi'):
                 fp = os.path.join(saving_dir, 'vary_thetaphi', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -65,10 +65,10 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
             cf = {'theta':theta, 'beta':beta}
             config = utils.update_dict(cf, default_net_config)
             config = utils.update_dict(config, default_infosys_config)
-            
+
             config_name = f'{idx}{jdx}'
             all_exps["vary_thetabeta"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_thetabeta'):
                 fp = os.path.join(saving_dir, 'vary_thetabeta', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -82,10 +82,10 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
             cf = {'theta':theta, 'gamma':gamma}
             config = utils.update_dict(cf, default_net_config)
             config = utils.update_dict(config, default_infosys_config)
-            
+
             config_name = f'{idx}{jdx}'
             all_exps["vary_thetagamma"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_thetagamma'):
                 fp = os.path.join(saving_dir, 'vary_thetagamma', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -96,13 +96,13 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
     for idx,beta in enumerate(configs.BETA):
         for kdx,target in enumerate(configs.TARGETING):
             cf = {'beta': beta, 'targeting_criterion': target}
-        
+
             config = utils.update_dict(cf, default_net_config)
             config = utils.update_dict(config, default_infosys_config)
-        
+
             config_name = f'{str(target)}{idx}'
             all_exps["vary_beta"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_beta'):
                 fp = os.path.join(saving_dir, 'vary_beta', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -119,7 +119,7 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
 
             config_name = f'{str(target)}{idx}'
             all_exps["vary_phi"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_phi'):
                 fp = os.path.join(saving_dir, 'vary_phi', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -136,7 +136,7 @@ def make_exps(saving_dir, default_net_config, default_infosys_config):
 
             config_name = f'{str(target)}{idx}'
             all_exps["vary_gamma"][config_name] = config
-            
+
             if utils.make_sure_dir_exists(saving_dir, 'vary_gamma'):
                 fp = os.path.join(saving_dir, 'vary_gamma', f'{config_name}.json')
                 json.dump(config,open(fp,'w'))
@@ -152,7 +152,7 @@ if __name__=='__main__':
     # ABS_PATH = ''
     # saving_dir = os.path.join(ABS_PATH, "data_hi")
 
-    ABS_PATH = '/N/slate/baotruon/marketplace'
+    ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
     # exps results in newpipeline/results/final* (09052022)
     # saving_dir = os.path.join(ABS_PATH, "config_final")

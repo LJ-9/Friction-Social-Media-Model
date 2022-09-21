@@ -1,11 +1,11 @@
 #TODO : havent tested this script
-import infosys.utils as utils 
-import infosys.plot_utils as plot_utils 
+import infosys.utils as utils
+import infosys.plot_utils as plot_utils
 import infosys.config_values as configs
 
 
 import matplotlib.pyplot as plt
-import os 
+import os
 import glob
 import json
 from collections import defaultdict
@@ -26,22 +26,22 @@ target_params = list(set(params)-set(exclude))
 # ['phi','graph_gml', 'beta','gamma','targeting_criterion','quality','theta']
 
 """
-Combine results of exps in the folders into a df. 
-The columns are target_params and 'quality_{suffix}', 
+Combine results of exps in the folders into a df.
+The columns are target_params and 'quality_{suffix}',
 e.g: if folder 1 has 3 runs, the columns are 'quality00', 'quality01', 'quality02'
-Then get the average quality and std of these columns for plotting  
+Then get the average quality and std of these columns for plotting
 """
 for jdx, folder in enumerate(folders):
-    
+
     data = defaultdict(lambda: [])
     #iterate through all exps in this folder
     for idx, fpath in enumerate(glob.glob(os.path.join(RES_DIR, folder, '*.json'))):
         exp_res = json.load(open(fpath, 'r'))
-        # only check the first file: 
+        # only check the first file:
         # if file contains multiple qualities, make 'quality' col with a suffix, e.g: quality_00
         # add a column to the df.columns
         if idx==0:
-            no_runs = len(exp_res['quality']) #quality is a list over multiple runs 
+            no_runs = len(exp_res['quality']) #quality is a list over multiple runs
             # df_cols += [f'quality{jdx}{ith_run}' for ith_run in range(no_runs)]
 
         for param in target_params:
@@ -49,16 +49,16 @@ for jdx, folder in enumerate(folders):
 #                 data[param] += [exp_res[param][0]]
                 for ith_run in range(no_runs):
                     data[f'quality{jdx}{ith_run}'] += [exp_res['quality'][ith_run]]
-                        
-                    
+
+
             else:
                 data[param] += [exp_res[param]]
-    
+
     df = pd.DataFrame(data=data, columns = data.keys())
     print(df.columns)
     dfs += [df]
- 
-## Merge results across all runs, 
+
+## Merge results across all runs,
 merge_on = list(set(target_params) - set(['quality']))
 data = dfs[0]
 
