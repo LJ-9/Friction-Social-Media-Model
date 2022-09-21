@@ -11,7 +11,7 @@ ABS_PATH = ''
 DATA_DIR = os.path.join(ABS_PATH, 'data')
 RES_DIR = os.path.join(ABS_PATH, 'result')
 mode='igraph'
-sim_num = 2
+sim_num = 1
 
 rule all:
     input: os.path.join(RES_DIR, 'results.json')
