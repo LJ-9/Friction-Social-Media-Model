@@ -191,7 +191,13 @@ class InfoSystem:
             # pick and share a meme unless friction prevents you to do so:
             # if agent has had exposure to friction, pick qual meme (with low probability)
             if self.agent_friction_exposure.get(agent_id, 0) > 0 and random.random() < self.learning_friction: # TODO: Do we want exposed agents also to improve passing the quiz? Meachnism to up the number of memes out there agein?
-                meme = random.choices(feed, weights=[m.quality for m in feed], k=1)[0] # agent has learned to make choice based on quality (some of the time: learning_friction)
+                if sum([m.quality for m in feed]) > 0:
+                    meme = random.choices(feed, weights=[m.quality for m in feed], k=1)[0]# agent has learned to make choice based on quality (some of the time: learning_friction)
+                else:
+                    # TODO: Do nothing if no qual memes around? Threshold? Pick at random? Choose according to fitness?
+                    #meme = random.choices(feed, weights=[m.fitness for m in feed], k=1)[0]
+                    meme = None
+
             else:
                 meme = random.choices(feed, weights=[m.fitness for m in feed], k=1)[0] #random choices return a list
 
@@ -208,7 +214,7 @@ class InfoSystem:
                     print("meme was shared despite friction")
                 else:
                     meme = None # if friction is not passed, don't do anything, friction prevented sharing
-
+                    print("friction prevented sharing")
         else:
             # new meme
             self.num_meme_unique+=1
@@ -218,37 +224,39 @@ class InfoSystem:
             print("create new meme")
         # book keeping
         # TODO: add forgotten memes per degree
-        if self.trackmeme is True:
-            self._update_meme_popularity(meme, agent)
-
-
         influx_by_agent_all = {"bot_in":0, "bot_out": 0, "human_in":0, "human_out":0} # update meme_all_changes_timestep
+        if meme is not None:
+            if self.trackmeme is True:
+                self._update_meme_popularity(meme, agent)
 
-        print("meme was shared or posted, not None")
-        # spread (truncate feeds at max len alpha)
-        follower_idxs = self.network.predecessors(agent) #return list of int
-        follower_uids = [n['uid'] for n in self.network.vs if n.index in follower_idxs]
 
-        humfollower_uids = [n['uid'] for n in self.network.vs if (n.index in follower_idxs) and (n['bot']==0)]
 
-        for follower in follower_uids:
-            #print('follower feed before:', ["{0:.2f}".format(round(m[0], 2)) for m in G.nodes[f]['feed']])
-            # add meme to top of follower's feed (theta copies if poster is bot to simulate flooding)
+            print("meme was shared or posted, not None")
+            # spread (truncate feeds at max len alpha)
+            follower_idxs = self.network.predecessors(agent) #return list of int
+            follower_uids = [n['uid'] for n in self.network.vs if n.index in follower_idxs]
 
-            if agent['bot']==1:
-                follower_influx = self._add_meme_to_feed(follower, meme, n_copies = self.theta)
-            else:
-                follower_influx = self._add_meme_to_feed(follower, meme)
+            humfollower_uids = [n['uid'] for n in self.network.vs if (n.index in follower_idxs) and (n['bot']==0)]
 
-            assert(len(self.agent_feeds[follower]) <= self.alpha)
 
-            # only track in-outflux for human agents
-            if (self.track_forgotten is True) and (follower in humfollower_uids):
-                for flowtype in follower_influx.keys():
-                    influx_by_agent_all[flowtype] += follower_influx[flowtype]
+            for follower in follower_uids:
+                #print('follower feed before:', ["{0:.2f}".format(round(m[0], 2)) for m in G.nodes[f]['feed']])
+                # add meme to top of follower's feed (theta copies if poster is bot to simulate flooding)
 
-                for flowtype in follower_influx.keys():
-                    self.meme_replacement[follower][flowtype] = follower_influx[flowtype]
+                if agent['bot']==1:
+                    follower_influx = self._add_meme_to_feed(follower, meme, n_copies = self.theta)
+                else:
+                    follower_influx = self._add_meme_to_feed(follower, meme)
+
+                assert(len(self.agent_feeds[follower]) <= self.alpha)
+
+                # only track in-outflux for human agents
+                if (self.track_forgotten is True) and (follower in humfollower_uids):
+                    for flowtype in follower_influx.keys():
+                        influx_by_agent_all[flowtype] += follower_influx[flowtype]
+
+                    for flowtype in follower_influx.keys():
+                        self.meme_replacement[follower][flowtype] = follower_influx[flowtype]
 
         return influx_by_agent_all
 
@@ -332,6 +340,7 @@ class InfoSystem:
 
     def _add_meme_to_feed(self, agent_id, meme, n_copies=1):
         # Insert meme to feed. Forget if feed size exceeds alpha (Last in last out)
+
         feed = self.agent_feeds[agent_id]
         feed[0:0] = [meme] * n_copies
 

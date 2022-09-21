@@ -9,8 +9,8 @@
     "phi": 1,
     "alpha": 15,
     "theta": 1,
-    "mu_friction": 0.1,
+    "mu_friction": 0,
     "pass_friction": 0.5,
-    "learning_friction": 0.01,
+    "learning_friction": 0.9,
     "human_network": "follower_network.gml"
 }
