@@ -29,7 +29,8 @@ rule run_simulation:
 
 rule init_net:
     input:
-        follower = os.path.join(DATA_DIR, 'follower_network.gml'),
+        #follower = os.path.join(DATA_DIR, 'follower_network.gml'),
+        follower = os.path.join(DATA_DIR, 'Amended_BA_Friction_m=3_n=1000_coeff=.29.gml'),
         configfile = os.path.join(DATA_DIR, 'config.json')
 
     output: os.path.join(DATA_DIR, "infosys_network.gml")

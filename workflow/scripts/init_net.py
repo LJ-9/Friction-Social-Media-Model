@@ -1,6 +1,6 @@
 import infosys.ig_utils as ig_utils
 import infosys.graphutils as graphutils
-import infosys.utils as utils 
+import infosys.utils as utils
 import networkx as nx
 import sys
 import argparse
@@ -46,11 +46,11 @@ def main(args):
     configfile = args.config
     mode = args.mode
 
-    
+
 
     net_spec = json.load(open(configfile,'r'))
-    if net_spec['human_network'] is not None:
-        net_spec.update({'human_network':infile})
+    # if net_spec['human_network'] is not None: # config specification not picked up on anyway
+    net_spec.update({'human_network':infile})
 
     # print(net_spec)
     try:
@@ -60,7 +60,7 @@ def main(args):
         else:
             G = init_nx_graph(net_spec)
             nx.write_gml(G, outfile)
-    
+
     #Write empty file if exception so smk don't complain
     except Exception as e:
         print('Exception when making infosystem network. \n Likely due to sampling followers in targeting criteria.')
