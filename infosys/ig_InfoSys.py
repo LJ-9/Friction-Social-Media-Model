@@ -22,6 +22,7 @@ import networkx as nx
 import random
 import numpy as np
 from collections import Counter, defaultdict
+import time
 
 
 class InfoSystem:
@@ -185,7 +186,7 @@ class InfoSystem:
         agent = random.choice(self.network.vs)
         agent_id = agent['uid']
         feed = self.agent_feeds[agent_id]
-        print("selected agent")
+        #print("selected agent")
 
         if len(feed)>0 and random.random() > self.mu:
             # pick and share a meme unless friction prevents you to do so:
@@ -203,25 +204,28 @@ class InfoSystem:
 
             if random.random() < self.mu_friction: # friction is triggered
                 # TODO: log exposure to friction
-                print("friction triggered")
+                #print("friction triggered")
                 if agent_id in self.agent_friction_exposure:
                     self.agent_friction_exposure[agent_id]+=1
                 else:
                     self.agent_friction_exposure[agent_id]=1
 
                 if random.random() < self.pass_friction: # if frictiion is passed, share post
+                # pass_friction is fixed to 0. Earlier it was fixed at a .5 probability to pass, meaning upon the trigger of friction,
+                # a coin is flipped whether the quiz is passed. This parameter can mathematically be
+                # represented in the mu_friction, simplifying the parameterspace. mu_friction = .1 and pass_friction =.5 is equal to mu_friction = .05
                     pass
-                    print("meme was shared despite friction")
+                    #print("meme was shared despite friction")
                 else:
                     meme = None # if friction is not passed, don't do anything, friction prevented sharing
-                    print("friction prevented sharing")
+                    #print("friction prevented sharing")
         else:
             # new meme
             self.num_meme_unique+=1
             meme = Meme(self.num_meme_unique, is_by_bot=agent['bot'], phi=self.phi)
 
             self.all_memes += [meme]
-            print("create new meme")
+            ##print("create new meme")
         # book keeping
         # TODO: add forgotten memes per degree
         influx_by_agent_all = {"bot_in":0, "bot_out": 0, "human_in":0, "human_out":0} # update meme_all_changes_timestep
@@ -231,7 +235,7 @@ class InfoSystem:
 
 
 
-            print("meme was shared or posted, not None")
+            #print("meme was shared or posted, not None")
             # spread (truncate feeds at max len alpha)
             follower_idxs = self.network.predecessors(agent) #return list of int
             follower_uids = [n['uid'] for n in self.network.vs if n.index in follower_idxs]
@@ -240,7 +244,7 @@ class InfoSystem:
 
 
             for follower in follower_uids:
-                #print('follower feed before:', ["{0:.2f}".format(round(m[0], 2)) for m in G.nodes[f]['feed']])
+                ##print('follower feed before:', ["{0:.2f}".format(round(m[0], 2)) for m in G.nodes[f]['feed']])
                 # add meme to top of follower's feed (theta copies if poster is bot to simulate flooding)
 
                 if agent['bot']==1:

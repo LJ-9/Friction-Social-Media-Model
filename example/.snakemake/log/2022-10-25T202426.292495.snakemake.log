@@ -1,0 +1,188 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+run_simulation      703              1              1
+total               704              1              1
+
+Select jobs to execute...
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.035-learn_fr_0.015.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json.gz
+    jobid: 168
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json
+    wildcards: exp_name=mu_fr_0.035-learn_fr_0.015
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.005-learn_fr_0.39999999999999997.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json.gz
+    jobid: 28
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json
+    wildcards: exp_name=mu_fr_0.005-learn_fr_0.39999999999999997
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.05-learn_fr_0.25.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json.gz
+    jobid: 268
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json
+    wildcards: exp_name=mu_fr_0.05-learn_fr_0.25
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.01-learn_fr_0.0.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.0.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.0.json.gz
+    jobid: 30
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.0.json
+    wildcards: exp_name=mu_fr_0.01-learn_fr_0.0
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.045-learn_fr_0.045.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json.gz
+    jobid: 228
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json
+    wildcards: exp_name=mu_fr_0.045-learn_fr_0.045
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.055-learn_fr_0.075.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json.gz
+    jobid: 288
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json
+    wildcards: exp_name=mu_fr_0.055-learn_fr_0.075
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.09-learn_fr_0.03.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json.gz
+    jobid: 468
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json
+    wildcards: exp_name=mu_fr_0.09-learn_fr_0.03
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+
+[Tue Oct 25 20:24:27 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.01-learn_fr_0.09.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json.gz
+    jobid: 48
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json
+    wildcards: exp_name=mu_fr_0.01-learn_fr_0.09
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+[Tue Oct 25 20:32:46 2022]
+Finished job 30.
+1 of 704 steps (0.1%) done
+Select jobs to execute...
+
+[Tue Oct 25 20:32:46 2022]
+rule run_simulation:
+    input: data/infosys_network.gml, config_friction/vary_friction_and_learning/mu_fr_0.02-learn_fr_0.2.json
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json.gz
+    jobid: 105
+    reason: Missing output files: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json
+    wildcards: exp_name=mu_fr_0.02-learn_fr_0.2
+    resources: tmpdir=/var/folders/0h/1n_j20xj2zzg446ph069f1z00000gn/T
+
+Terminating processes on user request, this might take some time.
+[Tue Oct 25 20:34:30 2022]
+Error in rule run_simulation:
+    jobid: 105
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.02-learn_fr_0.2.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.02-learn_fr_0.2.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 48
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.01-learn_fr_0.09.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.01-learn_fr_0.09.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 468
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.09-learn_fr_0.03.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.09-learn_fr_0.03.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 28
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.005-learn_fr_0.39999999999999997.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.005-learn_fr_0.39999999999999997.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 268
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.05-learn_fr_0.25.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.05-learn_fr_0.25.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 288
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.055-learn_fr_0.075.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.055-learn_fr_0.075.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 228
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.045-learn_fr_0.045.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.045-learn_fr_0.045.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+[Tue Oct 25 20:34:31 2022]
+Error in rule run_simulation:
+    jobid: 168
+    output: results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json, verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json.gz
+    shell:
+        
+        python3 -m workflow.scripts.driver -i data/infosys_network.gml -o results/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json -v verbose/25102022_friction_vary_friction_and_learning_5_runs/mu_fr_0.035-learn_fr_0.015.json.gz --config config_friction/vary_friction_and_learning/mu_fr_0.035-learn_fr_0.015.json --times 5 --mode igraph
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2022-10-25T202426.292495.snakemake.log
