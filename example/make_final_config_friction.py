@@ -8,8 +8,8 @@ import os
 import json
 
 infosys_default_friction = {
-    "beta": 0.05,
-    "gamma": 0.01,
+    "beta": 0,
+    "gamma": 0,
     "targeting_criterion": None,
     "trackmeme": True,
     "verbose": False,
@@ -42,8 +42,10 @@ def make_exps(saving_dir, default_infosys_config):
             json.dump(config,open(fp,'w'))
 
 
-    MU_FRICTION = sorted(list(np.arange(.01, .105, .01))+list(np.arange(.2, .6, .1)))#(.005, .505, .005)#(.005, .505, .005)
-    LEARNING_FRICTION = sorted(list(np.arange(.0, .105, .01))+list(np.arange(.2, .6, .1)))#(0, .505, .005)
+    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#(.005, .505, .005)#(.005, .505, .005)
+#(.005, .505, .005)#(.005, .505, .005)
+ #sorted(list(np.arange(.01, .105, .01))+list(np.arange(.2, .6, .1)))#(.005, .505, .005)#(.005, .505, .005)
+    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#(0, .505, .005)#(0, .505, .005)#sorted(list(np.arange(.0, .105, .01))+list(np.arange(.2, .6, .1)))#(0, .505, .005)
 
     make_single_config(0.0, 0.0)
 
@@ -61,5 +63,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "example/config_friction")
+    saving_dir = os.path.join(ABS_PATH, "example/config_friction_Nov8_3")
     make_exps(saving_dir, configs.infosys_default)

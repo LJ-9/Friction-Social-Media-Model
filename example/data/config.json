@@ -1,6 +1,6 @@
 {
-    "beta": 0.05,
-    "gamma": 0.01,
+    "beta": 0.00,
+    "gamma": 0.00,
     "targeting_criterion": null,
     "trackmeme": true,
     "verbose": false,

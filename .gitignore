@@ -8,6 +8,7 @@ data/*
 data_/*
 newpipeline/*
 .snakemake/*
+example/.snakemake/*
 results/
 infosys.egg-info/
 synthetic_results/*
