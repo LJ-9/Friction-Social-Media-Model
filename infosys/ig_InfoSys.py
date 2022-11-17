@@ -272,11 +272,53 @@ class InfoSystem:
         self.quality_diff = abs(new_quality - self.quality) / self.quality if self.quality > 0 else 0
         self.quality = new_quality
 
-
     def measure_kendall_tau(self):
         # calculate discriminative power of system
         # Call only after self._return_all_meme_info() is called
+        # Laura Nov 2022: newly written function to account for ties when producing ranking1 and ranking2
+        qualities = [meme['quality'] for meme in self.meme_dict]
+        unique_qualities = set(qualities) 
 
+        ranks = {key: rank for rank, key in enumerate(sorted(unique_qualities, reverse=True), 1)}
+
+        for meme in self.meme_dict:
+            meme_quality = meme['quality']
+            qual_th = ranks[meme_quality]
+            meme.update({'qual_th':qual_th})
+
+
+        shares = [meme['human_shares'] for meme in self.meme_dict]
+        unique_shares = set(shares)
+
+        ranks = {key: rank for rank, key in enumerate(sorted(unique_shares, reverse=True), 1)}
+
+        for meme in self.meme_dict:
+            meme_shares = meme['human_shares']
+            share_th = ranks[meme_shares]
+            meme.update({'share_th': share_th})
+
+
+        idx_ranked = sorted(self.meme_dict, key=lambda m: m['id'])
+        ranking1 = [meme['qual_th'] for meme in idx_ranked] 
+        ranking2 = [meme['share_th'] for meme in idx_ranked]
+
+        print(ranking1, ranking2)
+        
+        tau, p_value = utils.kendall_tau(ranking1, ranking2) 
+        # Be aware: If one ranking comprises only ties, then nan is returned.
+        # from scipy function source code: https://github.com/scipy/scipy/blob/v1.9.3/scipy/stats/_stats_py.py#L5018-L5225 
+        # sourcecode: if xtie == tot or ytie == tot:
+            # return KendalltauResult(np.nan, np.nan)
+            # Note that tot = con + dis + (xtie - ntie) + (ytie - ntie) + ntie
+            #               = con + dis + xtie + ytie - ntie
+        # end sourcode
+        return tau, p_value # tau in [-1,1]
+
+   
+    def measure_kendall_tau(self):
+        # calculate discriminative power of system
+        # Call only after self._return_all_meme_info() is called
+        # Laura: This function does not account for ties when producing ranking 1 and ranking2
         quality_ranked = sorted(self.meme_dict, key=lambda m: m['quality'])
         for ith, elem in enumerate(quality_ranked):
             elem.update({'qual_th':ith})
