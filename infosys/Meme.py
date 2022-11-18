@@ -2,13 +2,15 @@
 import random
 
 class Meme:
-    def __init__(self, id, is_by_bot=0, phi=1):
+    def __init__(self, id, truncation_interval, is_by_bot=0, phi=1):
         self.id = id
         self.is_by_bot = is_by_bot
         self.phi = phi 
+        self.truncation_interval = truncation_interval
         quality, fitness  = self.get_values()
         self.quality = quality
         self.fitness = fitness
+        
     
     # return (quality, fitness, id) meme tuple depending on bot flag
     # using https://en.wikipedia.org/wiki/Inverse_transform_sampling
@@ -32,7 +34,21 @@ class Meme:
             # quality = fitness
             u = random.random()
             quality = 1 - (1 - u)**(1 / exponent)
-        
+
+    # new addition to introduce some correlation of quality and fitness 
+    # if sampled quality and fitness are do not fall within a truncated space of the distribution, 
+    # then quality is moved to within the truncated space
+        if self.truncation_interval > 0:
+            if ((fitness - self.truncation_interval) <= quality <= (fitness + self.truncation_interval)) == False:
+                if quality > fitness:
+                    quality = fitness + self.truncation_interval
+                    if quality > 1:
+                        quality = 1
+                if quality < fitness:
+                    quality = fitness - self.truncation_interval
+                    if quality < 0:
+                        quality = 0
+    
         return quality, fitness
 
-    def get_values(self):
+            

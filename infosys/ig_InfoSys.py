@@ -43,9 +43,12 @@ class InfoSystem:
                 mu_friction = 0.1, # Likelihood that friction is triggered when about to repost/retweet,
                                    # (1-mu-mu_friction) = likelihood that no friction is triggered, just normally repost
                 pass_friction = 0.5, # Agent "passes" friction quiz, on to repost/retweet after exposore to friction
-                learning_friction = 0.01): # Learning after exposure to friction (no matter whether pass or no pass).
+                learning_friction = 0.01, # Learning after exposure to friction (no matter whether pass or no pass).
                                            # learning_friction determined the probabiliy that agents "learn to see quality"
                                            # when choosing which meme to repost
+                truncation_interval = 0,
+                check_conv = True): 
+
 
         self.network = None #TODO: can remove this
         self.verbose = verbose
@@ -71,6 +74,8 @@ class InfoSystem:
         self.mu_friction=mu_friction
         self.pass_friction=pass_friction
         self.learning_friction=learning_friction
+        self.truncation_interval = truncation_interval
+        self.check_conv = check_conv
 
         #Keep track of number of memes globally
         self.meme_dict = [] # list of dicts, contains of {"meme_id": meme.__dict__ and popularity information updated from self.meme_popularity}
@@ -115,7 +120,14 @@ class InfoSystem:
 
     # @profile
     def simulation(self):
-        while self.quality_diff > self.epsilon:
+        
+        qual_delta = False
+        steps_after_convergence = 0
+
+        while (self.quality_diff > self.epsilon if not self.check_conv else steps_after_convergence <= 50):
+           
+            if self.quality_diff <= self.epsilon:
+                qual_delta == True 
             if self.verbose:
                 # print('time_step = {}, q = {}, diff = {}'.format(self.time_step, self.quality, self.quality_diff), flush=True)
                 print('time_step = {}, q = {}, diff = {}, unique/human memes = {}/{}, all memes created={}'.format(self.time_step, self.quality, self.quality_diff, self.num_meme_unique, self.memes_human_feed, self.num_memes), flush=True)
@@ -150,6 +162,9 @@ class InfoSystem:
                 total_flow = sum([self.meme_replacement[agent][flow_type] for agent in self.meme_replacement.keys()])
                 self.meme_net_change_timestep[flow_type] += [total_flow]
 
+            if qual_delta == True:
+                steps_after_convergence += 1
+                print(steps_after_convergence)
             self.update_quality()
 
         all_feeds = self.agent_feeds # dict of {agent['uid']:[Meme()] } each value is a list of Meme obj in the agent's feed
@@ -222,7 +237,7 @@ class InfoSystem:
         else:
             # new meme
             self.num_meme_unique+=1
-            meme = Meme(self.num_meme_unique, is_by_bot=agent['bot'], phi=self.phi)
+            meme = Meme(self.num_meme_unique, self.truncation_interval, is_by_bot=agent['bot'], phi=self.phi)
 
             self.all_memes += [meme]
             ##print("create new meme")
