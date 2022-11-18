@@ -8,7 +8,7 @@ data/*
 data_/*
 newpipeline/*
 .snakemake/*
-example/.snakemake/*
+Friction/.snakemake/*
 results/
 infosys.egg-info/
 synthetic_results/*
@@ -16,7 +16,7 @@ strategy_analyses/*
 long_results/*
 test/*
 influx_analyses/*
-example/config*
-example/result/*
-example/results/*
-example/verbose/*
+Friction/config*
+Friction/result/*
+Friction/results/*
+Friction/verbose/*
