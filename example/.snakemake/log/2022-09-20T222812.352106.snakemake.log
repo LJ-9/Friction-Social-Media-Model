@@ -1,6 +1,0 @@
-Building DAG of jobs...
-MissingInputException in rule init_net in line 29 of /Users/laurajahn/Documents/Git/Marketplace-of-ideas/example/Snakefile:
-Missing input files for rule init_net:
-    output: /Users/laurajahn/Documents/Git/Marketplace-of-ideas/data/infosys_network.gml
-    affected files:
-        /Users/laurajahn/Documents/Git/Marketplace-of-ideas/data/config.json
