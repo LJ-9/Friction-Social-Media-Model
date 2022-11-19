@@ -127,7 +127,7 @@ class InfoSystem:
         while (self.quality_diff > self.epsilon if not self.check_conv else steps_after_convergence <= 50):
            
             if self.quality_diff <= self.epsilon:
-                qual_delta == True 
+                qual_delta = True 
             if self.verbose:
                 # print('time_step = {}, q = {}, diff = {}'.format(self.time_step, self.quality, self.quality_diff), flush=True)
                 print('time_step = {}, q = {}, diff = {}, unique/human memes = {}/{}, all memes created={}'.format(self.time_step, self.quality, self.quality_diff, self.num_meme_unique, self.memes_human_feed, self.num_memes), flush=True)
