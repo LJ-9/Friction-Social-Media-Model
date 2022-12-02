@@ -148,6 +148,8 @@ class InfoSystem:
                 # ^ self.meme_replacement is modified at this step
                 #print(influx_by_agent_all)
 
+                
+
                 if self.track_forgotten is True:
                     # add meme flow done by this agent (on all their followers) to the total changes by all agents in this cycle
                     for key in influx_by_agent_all.keys():
@@ -164,7 +166,7 @@ class InfoSystem:
 
             if qual_delta == True:
                 steps_after_convergence += 1
-                print(steps_after_convergence)
+                #print(steps_after_convergence)
             self.update_quality()
 
         all_feeds = self.agent_feeds # dict of {agent['uid']:[Meme()] } each value is a list of Meme obj in the agent's feed
@@ -315,9 +317,9 @@ class InfoSystem:
 
         idx_ranked = sorted(self.meme_dict, key=lambda m: m['id'])
         ranking1 = [meme['qual_th'] for meme in idx_ranked] 
-        ranking2 = [meme['share_th'] for meme in idx_ranked]
+        ranking2 = [meme['share_th'] for meme in idx_ranked] 
 
-        print(ranking1, ranking2)
+        # print(ranking1, ranking2)
         
         tau, p_value = utils.kendall_tau(ranking1, ranking2) 
         # Be aware: If one ranking comprises only ties, then nan is returned.
@@ -330,23 +332,23 @@ class InfoSystem:
         return tau, p_value # tau in [-1,1]
 
    
-    def measure_kendall_tau(self):
+    #def measure_kendall_tau(self):
         # calculate discriminative power of system
         # Call only after self._return_all_meme_info() is called
         # Laura: This function does not account for ties when producing ranking 1 and ranking2
-        quality_ranked = sorted(self.meme_dict, key=lambda m: m['quality'])
-        for ith, elem in enumerate(quality_ranked):
-            elem.update({'qual_th':ith})
+       # quality_ranked = sorted(self.meme_dict, key=lambda m: m['quality'])
+       # for ith, elem in enumerate(quality_ranked):
+        #    elem.update({'qual_th':ith})
 
-        share_ranked = sorted(quality_ranked, key=lambda m: m['human_shares'])
-        for ith, elem in enumerate(share_ranked):
-            elem.update({'share_th':ith})
+       # share_ranked = sorted(quality_ranked, key=lambda m: m['human_shares'])
+       # for ith, elem in enumerate(share_ranked):
+      #      elem.update({'share_th':ith})
 
-        idx_ranked = sorted(share_ranked, key=lambda m: m['id'])
-        ranking1 = [meme['qual_th'] for meme in idx_ranked]
-        ranking2 = [meme['share_th'] for meme in idx_ranked]
-        tau, p_value = utils.kendall_tau(ranking1, ranking2)
-        return tau, p_value
+       # idx_ranked = sorted(share_ranked, key=lambda m: m['id'])
+       # ranking1 = [meme['qual_th'] for meme in idx_ranked]
+       # ranking2 = [meme['share_th'] for meme in idx_ranked]
+      #  tau, p_value = utils.kendall_tau(ranking1, ranking2)
+       # return tau, p_value
 
     def measure_average_quality(self):
         # calculate average quality of memes in system
@@ -354,6 +356,8 @@ class InfoSystem:
         # calculate meme quality for tracked Users
         total=0
         count=0
+
+
 
         human_uids = [n['uid'] for n in self.network.vs if n['bot']==0]
         for u in human_uids:

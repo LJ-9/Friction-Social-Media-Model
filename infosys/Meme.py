@@ -21,9 +21,9 @@ class Meme:
     def get_values(self):
 
         if self.is_by_bot==1:
-            exponent = 1 + (1 / self.phi)
+            exponent = 1 + (1 / self.phi) # why 1+?
         else:
-            exponent = 1 + self.phi
+            exponent = 1 + self.phi # why 1+?
             
         u = random.random() # sample from between 0 to 1
         fitness = 1 - (1 - u)**(1 / exponent)

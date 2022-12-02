@@ -45,9 +45,9 @@ def make_exps(saving_dir, default_infosys_config):
             json.dump(config,open(fp,'w'))
 
 
-    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
-    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
-    TRUNCATION_INTERVAL = [0,0.1]# proper: [0,0.05, 0.1, 0.2, 0.3] # how much quality and fitness (engagement) will be correlated (in a truncated interval, see meme.py)
+    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
+    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
+    TRUNCATION_INTERVAL = [0]# proper: [0,0.05, 0.1, 0.2, 0.3] # how much quality and fitness (engagement) will be correlated (in a truncated interval, see meme.py)
 
 
     for idx,truncation_interval in enumerate(TRUNCATION_INTERVAL):
@@ -66,5 +66,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Nov18_01")
+    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec01_2")
     make_exps(saving_dir, configs.infosys_default)
