@@ -57,7 +57,8 @@ class InfoSystem:
             print('Tracking forgotten memes')
         self.trackmeme = trackmeme
         self.tracktimestep = tracktimestep
-        self.quality_timestep=[]
+        self.quality_timestep_smoothened=[]
+        self.quality_timestep_average=[]
         self.meme_all_changes = defaultdict(lambda:[])
         # track the influx and outflux of memes globally. #TODO: Might not need this later
         # All changes happening in simulation: max num_memes= alpha * num_agents * num_followers (avg)
@@ -111,7 +112,7 @@ class InfoSystem:
             # structure: {"bot_in":[], "bot_out": [], "human_in":[], "human_out":[]} - items in list correspond to each timestep
 
             if verbose:
-                in_deg = [self.network.degree(n, mode='in') for n in self.network.vs]#number of followers
+                in_deg = [self.network.degree(n, mode='in') for n in self.network.vs] #number of followers
                 print('Graph Avg in deg', round(sum(in_deg)/len(in_deg),2))
 
         except Exception as e:
@@ -135,6 +136,8 @@ class InfoSystem:
             self.time_step += 1
             if self.tracktimestep is True:
                 self.quality_timestep+= [self.quality]
+                self.quality_timestep_average+= [self.measure_average_quality()]
+
 
             self.meme_all_changes_timestep = defaultdict(lambda: 0)
             # structure: {"bot_in":0, "bot_out": 0, "human_in":0, "human_out":0}
@@ -168,6 +171,7 @@ class InfoSystem:
                 steps_after_convergence += 1
                 #print(steps_after_convergence)
             self.update_quality()
+            
 
         all_feeds = self.agent_feeds # dict of {agent['uid']:[Meme()] } each value is a list of Meme obj in the agent's feed
 
@@ -187,7 +191,9 @@ class InfoSystem:
             'quality': self.quality,
             'diversity' : self.measure_diversity(),
             'discriminative_pow': self.measure_kendall_tau(),
-            'quality_timestep': self.quality_timestep,
+            'quality_timestep_smoothened': self.quality_timestep,
+            'quality_timestep_average': self.quality_timestep,
+
             'all_memes': self.meme_dict,
             'all_feeds': feeds,
             'meme_influx': self.meme_all_changes,
