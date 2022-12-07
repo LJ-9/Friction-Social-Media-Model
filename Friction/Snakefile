@@ -12,7 +12,7 @@ import infosys.utils as utils
 
 ABS_PATH = ''
 DATA_PATH = os.path.join(ABS_PATH, 'data')
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec07")
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec07_rho_eps")
 mode='igraph'
 sim_num = 1
 
