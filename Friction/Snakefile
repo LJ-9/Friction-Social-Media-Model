@@ -12,9 +12,9 @@ import infosys.utils as utils
 
 ABS_PATH = ''
 DATA_PATH = os.path.join(ABS_PATH, 'data')
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec01_2")
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec07")
 mode='igraph'
-sim_num = 3
+sim_num = 1
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
 exp_type = "vary_friction_and_learning_and_trunc"
@@ -22,7 +22,7 @@ exp_type = "vary_friction_and_learning_and_trunc"
 EXPS = json.load(open(config_fname,'r'))[exp_type]
 
 EXP_NAMES = list(EXPS.keys())#[-2:]
-RUN_PATH = f'01122022_friction_{exp_type}_{sim_num}_runs'
+RUN_PATH = f'07122022_friction_{exp_type}_{sim_num}_runs'
 RES_PATH = os.path.join(ABS_PATH,'results',RUN_PATH)
 TRACKING_PATH = os.path.join(ABS_PATH, 'verbose',RUN_PATH)
 

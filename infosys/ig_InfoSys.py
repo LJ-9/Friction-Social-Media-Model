@@ -34,8 +34,8 @@ class InfoSystem:
                 trackmeme=True, # Cannot be False if we calculate diversity and tau
                 tracktimestep=True,
                 verbose=False,
-                epsilon=0.0001, # Don't change this value
-                rho=0.8, # Don't change this value, check note above
+                epsilon=0.00001#0.0001, # Don't change this value
+                rho=0.95# 0.8, # Don't change this value, check note above
                 mu=0.5,
                 phi=1,
                 alpha=15,
@@ -135,7 +135,7 @@ class InfoSystem:
 
             self.time_step += 1
             if self.tracktimestep is True:
-                self.quality_timestep+= [self.quality]
+                self.quality_timestep_smoothened+= [self.quality]
                 self.quality_timestep_average+= [self.measure_average_quality()]
 
 
@@ -191,8 +191,8 @@ class InfoSystem:
             'quality': self.quality,
             'diversity' : self.measure_diversity(),
             'discriminative_pow': self.measure_kendall_tau(),
-            'quality_timestep_smoothened': self.quality_timestep,
-            'quality_timestep_average': self.quality_timestep,
+            'quality_timestep_smoothened': self.quality_timestep_smoothened,
+            'quality_timestep_average': self.quality_timestep_average,
 
             'all_memes': self.meme_dict,
             'all_feeds': feeds,

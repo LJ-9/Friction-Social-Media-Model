@@ -13,7 +13,7 @@ infosys_default_friction = {
     "targeting_criterion": None,
     "trackmeme": True,
     "verbose": False,
-    "epsilon": 0.0001,
+    "epsilon": 0.00001,
     "mu": 0.5,
     "phi": 1,
     "alpha": 15,
@@ -66,5 +66,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec01_2")
+    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec07")
     make_exps(saving_dir, configs.infosys_default)
