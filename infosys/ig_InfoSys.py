@@ -34,8 +34,8 @@ class InfoSystem:
                 trackmeme=True, # Cannot be False if we calculate diversity and tau
                 tracktimestep=True,
                 verbose=False,
-                epsilon=0.00001#0.0001, # Don't change this value
-                rho=0.95# 0.8, # Don't change this value, check note above
+                epsilon=0.00001, # Don't change this value
+                rho=0.95, # Don't change this value, check note above
                 mu=0.5,
                 phi=1,
                 alpha=15,
