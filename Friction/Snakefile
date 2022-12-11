@@ -10,46 +10,57 @@
 import infosys.utils as utils
 
 
-ABS_PATH = ''
+ABS_PATH = '/N/u/jahnla/Quartz/marketplace'
 DATA_PATH = os.path.join(ABS_PATH, 'data')
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec07_rho_eps")
+#TODO
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec09_random_nw2_testssh")
 mode='igraph'
 sim_num = 1
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
-exp_type = "vary_friction_and_learning_and_trunc"
-# get network names corresponding to the strategy
+#TODO
+exp_type = "vary_friction_and_learning_and_network"
 EXPS = json.load(open(config_fname,'r'))[exp_type]
+#EXP_NAMES = list(EXPS.keys())#[-2:]
+# get network names from config file
+EXPSdict = json.load(open(config_fname,'r'))[exp_type] # full dict to get network names
+# initializing key
+nw = "human_network"
+# using keys() and values() to extract values
+EXP = [sub[nw] for sub in EXPSdict.values() if nw in sub.keys()]
+EXP_NAMES = [f'{expname}+{expdict["human_network"]}' for (expname, expdict) in EXPSdict.items()][0:2]
 
-EXP_NAMES = list(EXPS.keys())#[-2:]
-RUN_PATH = f'07122022_friction_{exp_type}_{sim_num}_runs'
+
+#TODO
+RUN_PATH = f'09122022_friction_{exp_type}_{sim_num}_runs'
 RES_PATH = os.path.join(ABS_PATH,'results',RUN_PATH)
 TRACKING_PATH = os.path.join(ABS_PATH, 'verbose',RUN_PATH)
 
 
 rule all:
     input:
-        expand(os.path.join(RES_PATH, '{exp_name}.json'), exp_name=EXP_NAMES)
-
+        expand(os.path.join(RES_PATH, '{exp_name_netw_name}.json'), exp_name_netw_name=EXP_NAMES)
+        
 rule run_simulation:
     input:
-        network = os.path.join(DATA_PATH, "infosys_network.gml"),
+        network = os.path.join(DATA_PATH, "infosys_network_{networkname}"),
         configfile = os.path.join(CONFIG_PATH, exp_type, "{exp_name}.json")
     output:
-        measurements = os.path.join(RES_PATH, '{exp_name}.json'),
-        tracking = os.path.join(TRACKING_PATH, '{exp_name}.json.gz')
+        measurements = os.path.join(RES_PATH, '{exp_name}+{networkname}.json'),
+        tracking = os.path.join(TRACKING_PATH, '{exp_name}+{networkname}.json.gz')
     shell: """
         python3 -m workflow.scripts.driver -i {input.network} -o {output.measurements} -v {output.tracking} --config {input.configfile} --times {sim_num} --mode {mode}
     """
 
 rule init_net:
     input:
-        #follower = os.path.join(DATA_PATH, 'follower_network.gml'),
-        follower = os.path.join(DATA_PATH, 'Amended_BA_Friction_m=3_n=1000_coeff=.29.gml'),
-        configfile = os.path.join(DATA_PATH, 'config.json')
+        #TODO
+        follower = os.path.join(DATA_PATH, '{networkname}'),
+        configfile = os.path.join(DATA_PATH, 'config.json') # to get values for beta and gamma to build network
 
-    output: os.path.join(DATA_PATH, "infosys_network.gml")
+    output: os.path.join(DATA_PATH, "infosys_network_{networkname}")
 
     shell: """
             python3 -m workflow.scripts.init_net -i {input.follower} -o {output} --config {input.configfile} --mode {mode}
         """
+

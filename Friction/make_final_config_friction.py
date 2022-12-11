@@ -6,6 +6,7 @@ import infosys.final_configs as configs
 import numpy as np
 import os
 import json
+import glob
 
 infosys_default_friction = {
     "beta": 0,
@@ -13,7 +14,7 @@ infosys_default_friction = {
     "targeting_criterion": None,
     "trackmeme": True,
     "verbose": False,
-    "epsilon": 0.00001,
+    "epsilon": 0.0001,
     "mu": 0.5,
     "phi": 1,
     "alpha": 15,
@@ -31,32 +32,42 @@ def make_exps(saving_dir, default_infosys_config):
     all_exps = {}
 
     #vary beta & gamma, keep constant targeting strategy
-    all_exps["vary_friction_and_learning_and_trunc"] = {}
+    all_exps["vary_friction_and_learning_and_network"] = {}
 
-    def make_single_config(mu_friction, learning_friction, truncation_interval):
-        cf = {'mu_friction':mu_friction, 'learning_friction':learning_friction, 'truncation_interval': truncation_interval, 'targeting_criterion': configs.DEFAULT_STRATEGY}
+    def make_single_config(mu_friction, learning_friction, human_network):
+        cf = {'mu_friction':mu_friction, 'learning_friction':learning_friction, 'human_network': human_network, 'targeting_criterion': configs.DEFAULT_STRATEGY}
         config = utils.update_dict(cf, infosys_default_friction)
 
-        config_name = f'mu_fr_{mu_friction}-learn_fr_{learning_friction}-trunc_{truncation_interval}'
-        all_exps["vary_friction_and_learning_and_trunc"][config_name] = config
+        config_name = f'mu_fr_{mu_friction}-learn_fr_{learning_friction}'
+        all_exps["vary_friction_and_learning_and_network"][config_name] = config
 
-        if utils.make_sure_dir_exists(saving_dir, 'vary_friction_and_learning_and_trunc'):
-            fp = os.path.join(saving_dir, 'vary_friction_and_learning_and_trunc', f'{config_name}.json')
+        if utils.make_sure_dir_exists(saving_dir, 'vary_friction_and_learning_and_network'):
+            fp = os.path.join(saving_dir, 'vary_friction_and_learning_and_network', f'{config_name}.json')
             json.dump(config,open(fp,'w'))
 
 
     MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
     LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
-    TRUNCATION_INTERVAL = [0]# for testing: [0,0.05, 0.1, 0.2, 0.3] # how much quality and fitness (engagement) will be correlated (in a truncated interval, see meme.py)
+    # Make lists of networks to use: new network for each parameter combination (future task: for each sim rep new network? Now sim rep of parameter combi will be run on same network)
+    # folder path
+    NETWORKPATH = os.path.join(ABS_PATH, 'Friction/data')
+    # list to store network names
+    NETWORKS = []
+    # Iterate directory
+    for path in os.listdir(NETWORKPATH):
+        # check if current path is a file
+        if os.path.isfile(os.path.join(NETWORKPATH, path)):
+            NETWORKS.append(path)
+    list.sort(NETWORKS)
 
+    make_single_config(0.0, 0.0, NETWORKS[0])
 
-    for idx,truncation_interval in enumerate(TRUNCATION_INTERVAL):
-
-        make_single_config(0.0, 0.0, truncation_interval)
-
-        for idx,mu_friction in enumerate(MU_FRICTION):
-            for jdx,learning_friction in enumerate(LEARNING_FRICTION):
-                make_single_config(mu_friction, learning_friction, truncation_interval)
+    # pair each parameter combination with a random pre-generated network 
+    i = 1
+    for idx,mu_friction in enumerate(MU_FRICTION):
+        for jdx, learning_friction in enumerate(LEARNING_FRICTION):
+            make_single_config(mu_friction, learning_friction, NETWORKS[i])
+            i+=1
 
     fp = os.path.join(saving_dir, 'all_configs.json')
     json.dump(all_exps,open(fp,'w'))
@@ -66,5 +77,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec07_rho_eps")
+    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec09_random_nw2_testssh")
     make_exps(saving_dir, configs.infosys_default)
