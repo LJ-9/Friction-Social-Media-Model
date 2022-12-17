@@ -3,17 +3,16 @@
 #SBATCH --mail-user=jahnla@iu.edu
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=25
 #SBATCH --time=3-23:59:00
 #SBATCH --mail-type=FAIL,BEGIN,END
-#SBATCH --job-name=1
+#SBATCH --job-name=Notracktimestep
 
 ######  Module commands #####
 source /N/u/jahnla/Quartz/miniconda3/etc/profile.d/conda.sh 
-conda activate base
-pip install -e.
+conda activate snakemake
 
 ######  Job commands go below this line #####
 cd /N/u/jahnla/Quartz/marketplace/Friction
-echo '###### test1 ######'
-snakemake --nolock --cores 1
+echo '###### RUNDec14 ######'
+snakemake --nolock --cores 25

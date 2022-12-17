@@ -10,12 +10,12 @@
 import infosys.utils as utils
 
 
-ABS_PATH = '/N/u/jahnla/Quartz/marketplace'
+ABS_PATH = '/N/u/jahnla/Quartz/marketplace/Friction'
 DATA_PATH = os.path.join(ABS_PATH, 'data')
 #TODO
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec09_random_nw2_testssh")
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec13_random_nw_ssh_2")
 mode='igraph'
-sim_num = 1
+sim_num = 25 
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
 #TODO
@@ -28,11 +28,11 @@ EXPSdict = json.load(open(config_fname,'r'))[exp_type] # full dict to get networ
 nw = "human_network"
 # using keys() and values() to extract values
 EXP = [sub[nw] for sub in EXPSdict.values() if nw in sub.keys()]
-EXP_NAMES = [f'{expname}+{expdict["human_network"]}' for (expname, expdict) in EXPSdict.items()][0:2]
+EXP_NAMES = [f'{expname}+{expdict["human_network"]}' for (expname, expdict) in EXPSdict.items()]
 
 
 #TODO
-RUN_PATH = f'09122022_friction_{exp_type}_{sim_num}_runs'
+RUN_PATH = f'12122022_friction_{exp_type}_{sim_num}_runs'
 RES_PATH = os.path.join(ABS_PATH,'results',RUN_PATH)
 TRACKING_PATH = os.path.join(ABS_PATH, 'verbose',RUN_PATH)
 

@@ -14,7 +14,7 @@ infosys_default_friction = {
     "targeting_criterion": None,
     "trackmeme": True,
     "verbose": False,
-    "epsilon": 0.0001,
+    "epsilon": 0.00001,
     "mu": 0.5,
     "phi": 1,
     "alpha": 15,
@@ -46,8 +46,8 @@ def make_exps(saving_dir, default_infosys_config):
             json.dump(config,open(fp,'w'))
 
 
-    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
-    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, .9, .3))+[1])#sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
+    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
+    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
     # Make lists of networks to use: new network for each parameter combination (future task: for each sim rep new network? Now sim rep of parameter combi will be run on same network)
     # folder path
     NETWORKPATH = os.path.join(ABS_PATH, 'Friction/data')
@@ -77,5 +77,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec09_random_nw2_testssh")
+    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec13_random_nw_ssh_2")
     make_exps(saving_dir, configs.infosys_default)

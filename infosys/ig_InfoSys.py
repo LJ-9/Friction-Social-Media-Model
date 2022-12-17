@@ -32,9 +32,9 @@ class InfoSystem:
     def __init__(self, graph_gml,
                 track_forgotten=True,
                 trackmeme=True, # Cannot be False if we calculate diversity and tau
-                tracktimestep=True,
+                tracktimestep=False,
                 verbose=False,
-                epsilon=0.0001, # Don't change this value
+                epsilon=0.00001, # Don't change this value
                 rho=0.95, # Don't change this value, check note above
                 mu=0.5,
                 phi=1,
@@ -190,14 +190,14 @@ class InfoSystem:
         measurements = {
             'quality': self.quality,
             'diversity' : self.measure_diversity(),
-            'discriminative_pow': self.measure_kendall_tau(),
-            'quality_timestep_smoothened': self.quality_timestep_smoothened,
-            'quality_timestep_average': self.quality_timestep_average,
+            'discriminative_pow': self.measure_kendall_tau()#,
+            #'quality_timestep_smoothened': self.quality_timestep_smoothened,
+            #'quality_timestep_average': self.quality_timestep_average,
 
-            'all_memes': self.meme_dict,
-            'all_feeds': feeds,
-            'meme_influx': self.meme_all_changes,
-            'meme_netchange': self.meme_net_change_timestep
+            #'all_memes': self.meme_dict,
+            #'all_feeds': feeds,
+            #'meme_influx': self.meme_all_changes,
+            #'meme_netchange': self.meme_net_change_timestep
         }
 
         return measurements
