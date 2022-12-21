@@ -14,5 +14,5 @@ conda activate snakemake
 
 ######  Job commands go below this line #####
 cd /N/u/jahnla/Quartz/marketplace/Friction
-echo '###### RUNDec14 ######'
+echo '###### RUNDec21 ######'
 snakemake --nolock --cores 25

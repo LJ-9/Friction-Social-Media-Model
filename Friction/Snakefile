@@ -13,9 +13,9 @@ import infosys.utils as utils
 ABS_PATH = '/N/u/jahnla/Quartz/marketplace/Friction'
 DATA_PATH = os.path.join(ABS_PATH, 'data')
 #TODO
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec13_random_nw_ssh_2")
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec13_random_rho99_eps0.0001")
 mode='igraph'
-sim_num = 25 
+sim_num = 2 
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
 #TODO
