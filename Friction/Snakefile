@@ -13,9 +13,9 @@ import infosys.utils as utils
 ABS_PATH = '/N/u/jahnla/Quartz/marketplace/Friction'
 DATA_PATH = os.path.join(ABS_PATH, 'data')
 #TODO
-CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec13_random_rho99_eps0.0001")
+CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec30_random_rho99_eps0.00001_FINAL")
 mode='igraph'
-sim_num = 2 
+sim_num = 1 
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
 #TODO
@@ -32,7 +32,7 @@ EXP_NAMES = [f'{expname}+{expdict["human_network"]}' for (expname, expdict) in E
 
 
 #TODO
-RUN_PATH = f'12122022_friction_{exp_type}_{sim_num}_runs'
+RUN_PATH = f'30122022_eps_00001_friction_{exp_type}_{sim_num}_runs_final'
 RES_PATH = os.path.join(ABS_PATH,'results',RUN_PATH)
 TRACKING_PATH = os.path.join(ABS_PATH, 'verbose',RUN_PATH)
 
@@ -55,7 +55,7 @@ rule run_simulation:
 rule init_net:
     input:
         #TODO
-        follower = os.path.join(DATA_PATH, '{networkname}'),
+        follower = os.path.join(DATA_PATH, 'networks', '{networkname}'),
         configfile = os.path.join(DATA_PATH, 'config.json') # to get values for beta and gamma to build network
 
     output: os.path.join(DATA_PATH, "infosys_network_{networkname}")

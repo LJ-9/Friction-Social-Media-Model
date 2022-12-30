@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=25
 #SBATCH --time=3-23:59:00
 #SBATCH --mail-type=FAIL,BEGIN,END
-#SBATCH --job-name=Notracktimestep
+#SBATCH --job-name=finalrun
 
 ######  Module commands #####
 source /N/u/jahnla/Quartz/miniconda3/etc/profile.d/conda.sh 
@@ -14,5 +14,5 @@ conda activate snakemake
 
 ######  Job commands go below this line #####
 cd /N/u/jahnla/Quartz/marketplace/Friction
-echo '###### RUNDec21 ######'
+echo '###### RUNDec28 ######'
 snakemake --nolock --cores 25

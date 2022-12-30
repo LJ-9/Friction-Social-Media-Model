@@ -1,4 +1,4 @@
-""" Config for the first set of exps (vary mu_friction and learning_friction, keep all else constant)"""
+""" Config for the final set of exps (vary mu_friction and learning_friction and networks, keep all else constant)"""
 import os
 print(os.getcwd())
 import infosys.utils as utils
@@ -14,7 +14,7 @@ infosys_default_friction = {
     "targeting_criterion": None,
     "trackmeme": True,
     "verbose": False,
-    "epsilon": 0.0001,
+    "epsilon": 0.00001,
     "mu": 0.5,
     "phi": 1,
     "alpha": 15,
@@ -22,7 +22,7 @@ infosys_default_friction = {
     "mu_friction": 0.05,
     "pass_friction": 0,
     "learning_friction": 0.05,
-    "human_network": "Amended_BA_Friction_m=3_n=1000_coeff=.29.gml",
+    "human_network": "NW_0.gml",
     "truncation_interval": 0,
     "check_conv": True
 }
@@ -38,7 +38,7 @@ def make_exps(saving_dir, default_infosys_config):
         cf = {'mu_friction':mu_friction, 'learning_friction':learning_friction, 'human_network': human_network, 'targeting_criterion': configs.DEFAULT_STRATEGY}
         config = utils.update_dict(cf, infosys_default_friction)
 
-        config_name = f'mu_fr_{mu_friction}-learn_fr_{learning_friction}'
+        config_name = f'mu_fr_{mu_friction}-learn_fr_{learning_friction}-network_{human_network}'
         all_exps["vary_friction_and_learning_and_network"][config_name] = config
 
         if utils.make_sure_dir_exists(saving_dir, 'vary_friction_and_learning_and_network'):
@@ -46,11 +46,13 @@ def make_exps(saving_dir, default_infosys_config):
             json.dump(config,open(fp,'w'))
 
 
-    MU_FRICTION = sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))#sorted(list([0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
-    LEARNING_FRICTION =  sorted(list([0,0.01,0.05,0.1])+list(np.arange(.2, 1.1, .1)))
+    MU_FRICTION = list(np.arange(0.01, 0.2, .01))+list(np.arange(.2, 1.05, .1))
+    MU_FRICTION = list(np.around(np.array(MU_FRICTION),2))
+    LEARNING_FRICTION =  list(np.arange(0.0, 0.2, .01))+list(np.arange(.2, 1.05, .1))
+    LEARNING_FRICTION = list(np.around(np.array(LEARNING_FRICTION),2))
     # Make lists of networks to use: new network for each parameter combination (future task: for each sim rep new network? Now sim rep of parameter combi will be run on same network)
     # folder path
-    NETWORKPATH = os.path.join(ABS_PATH, 'Friction/data')
+    NETWORKPATH = os.path.join(ABS_PATH, 'Friction/data/networks')
     # list to store network names
     NETWORKS = []
     # Iterate directory
@@ -60,14 +62,24 @@ def make_exps(saving_dir, default_infosys_config):
             NETWORKS.append(path)
     list.sort(NETWORKS)
 
-    make_single_config(0.0, 0.0, NETWORKS[0])
+    for l in range(0,5):
+        make_single_config(0.0, 0.0, NETWORKS[l])
 
-    # pair each parameter combination with a random pre-generated network 
-    i = 1
+    # pair each parameter combination with 5 (i-m) random pre-generated network 
+    i = 5
     for idx,mu_friction in enumerate(MU_FRICTION):
         for jdx, learning_friction in enumerate(LEARNING_FRICTION):
             make_single_config(mu_friction, learning_friction, NETWORKS[i])
             i+=1
+            make_single_config(mu_friction, learning_friction, NETWORKS[i])
+            i+=1
+            make_single_config(mu_friction, learning_friction, NETWORKS[i])
+            i+=1
+            make_single_config(mu_friction, learning_friction, NETWORKS[i])
+            i+=1
+            make_single_config(mu_friction, learning_friction, NETWORKS[i])
+            i+=1
+
 
     fp = os.path.join(saving_dir, 'all_configs.json')
     json.dump(all_exps,open(fp,'w'))
@@ -77,5 +89,5 @@ if __name__=='__main__':
 
     ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
 
-    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec13_random_rho99_eps0.0001")
+    saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec30_random_rho99_eps0.00001_FINAL")
     make_exps(saving_dir, configs.infosys_default)
