@@ -15,7 +15,7 @@ DATA_PATH = os.path.join(ABS_PATH, 'data')
 #TODO
 CONFIG_PATH = os.path.join(ABS_PATH, "config_friction_Dec30_random_rho99_eps0.00001_FINAL")
 mode='igraph'
-sim_num = 1 
+sim_num = 10 
 
 config_fname = os.path.join(CONFIG_PATH, 'all_configs.json')
 #TODO
