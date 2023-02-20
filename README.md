@@ -10,7 +10,7 @@ This repository contains code to reproduce the results in the paper *Friction In
   }
  ```
 
-This work is based on the minimal social media simulation model [SimSom: A Simulator for Social Media](https://github.com/osome-iu/SimSoM) and based on the paper Vulnerabilities of the Online Public Square to Manipulation by Bao Tran Truong, Xiaodan Lou, Alessandro Flammini, and Filippo Menczer.
+This work is based on the minimal social media simulation model [SimSom: A Simulator for Social Media](https://github.com/osome-iu/SimSoM) and based on the paper *Vulnerabilities of the Online Public Square to Manipulation* by Bao Tran Truong, Xiaodan Lou, Alessandro Flammini, and Filippo Menczer.
 
 
 ## Data
