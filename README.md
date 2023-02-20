@@ -1,6 +1,14 @@
 # Manipulating the Online Marketplace of Ideas
 
-This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by Laura Jahn, Rasmus K. Rendsvig, Alessandro Flammini, and [Filippo Menczer](https://cnets.indiana.edu/fil/).
+This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by Laura Jahn, Rasmus K. Rendsvig, Alessandro Flammini, and Filippo Menczer.
+
+```
+  @article{Jahn23Friction,  
+    author = {{Jahn, Laura and Rendsvig, Rasmus~K., and Flammini, Alessandro, and Menczer, Filippo}},
+    title = {{Detecting Coordinated Inauthentic Behavior in Likes on Social Media: Proof of Concept}},  
+    year = {2023},   
+  }
+ ```
 
 ## Data
 Networks created for the simulation: TODO
