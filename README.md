@@ -1,4 +1,4 @@
-# Manipulating the Online Marketplace of Ideas
+# Friction Interventions to Curb the Spread of Misinformation on Social Media
 
 This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by Laura Jahn, Rasmus K. Rendsvig, Alessandro Flammini, and Filippo Menczer.
 
