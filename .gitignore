@@ -8,7 +8,7 @@ data/*
 data_/*
 newpipeline/*
 .snakemake/*
-#Friction/.snakemake/*
+Friction/.snakemake/*
 results/
 infosys.egg-info/
 synthetic_results/*
@@ -25,5 +25,6 @@ sbatch/*
 config_fivefive/*
 test/*
 Friction/data/networks/*
-Friction/old configs/*
+Friction/old configs/
+Friction/old snakefiles/
 Friction/plots/old/*
