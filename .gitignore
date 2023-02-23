@@ -20,11 +20,10 @@ influx_analyses/*
 Friction/result/*
 Friction/results/*
 Friction/verbose/*
-sbatch/*
 .DS_Store
 config_fivefive/*
 test/*
 Friction/data/networks/*
-Friction/old configs/*
-Friction/old snakefiles/*
+"Friction/old configs"
+"Friction/old snakefiles"
 Friction/plots/old/*
