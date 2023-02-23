@@ -24,6 +24,6 @@ Friction/verbose/*
 config_fivefive/*
 test/*
 Friction/data/networks/*
-"Friction/old configs"
-"Friction/old snakefiles"
+Friction/oldconfigs
+Friction/oldsnakefiles
 Friction/plots/old/*
