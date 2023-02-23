@@ -16,7 +16,7 @@ strategy_analyses/*
 long_results/*
 test/*
 influx_analyses/*
-#Friction/config*
+
 Friction/result/*
 Friction/results/*
 Friction/verbose/*
