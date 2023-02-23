@@ -56,3 +56,7 @@ How to multiple experiments: TODO
 
 # License
 This project is licensed under the terms of the GNU General Public License v3.0 (gpl-3.0). See [LICENSE](https://github.com/humanplayer2/get-twitter-likers-data/blob/main/LICENSE.md) for rights and limitations.
+
+# Contact
+The corresponding author can be contacted at laurajahn [at] outlook [dot] de.
+
