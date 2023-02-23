@@ -20,3 +20,7 @@ Friction/config*
 Friction/result/*
 Friction/results/*
 Friction/verbose/*
+sbatch/*
+.DS_Store
+convig_fivefive/*
+test/*
