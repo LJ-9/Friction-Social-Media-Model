@@ -13,12 +13,18 @@ This repository contains code to reproduce the results in the paper *Friction In
 This work is based on the minimal social media simulation model [SimSom: A Simulator for Social Media](https://github.com/osome-iu/SimSoM) and based on the paper *Vulnerabilities of the Online Public Square to Manipulation* by Bao Tran Truong, Xiaodan Lou, Alessandro Flammini, and Filippo Menczer.
 
 
-## Data
+## Data 
 Networks are created before the simulation runs. The script to create networks [`Generate_networks.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/data/Generate_networks.py) is called through the script `bash-nw`.  
 
-Configs (parameter combinations) are generated with [`make_final_config_friction.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/make_final_config_friction.py) and called in the workflow with 
+Configs (parameter combinations) are generated with [`make_final_config_friction.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/make_final_config_friction.py).
 
-Configs are generated
+## Running the simulation
+
+A snakemake file [`Snakefile`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Snakefile) controls the workflow and kicks of the simulation. Output is saved to `Friction/results` and `Friction/verbose`.
+
+## Data Analysis
+
+Data is analysed in [`Analysis_results`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Analysis_results.ipynb).
 
 ## Environment
 
