@@ -25,5 +25,6 @@ sbatch/*
 config_fivefive/*
 test/*
 Friction/data/networks/*
-Friction/old* 
+Friction/old configs/
+Friction/old snakefiles/ 
 Friction/plots/old/*

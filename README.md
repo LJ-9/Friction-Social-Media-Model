@@ -34,7 +34,7 @@ A snakemake file [`Snakefile`](https://github.com/LJ-9/Friction-Social-Media-Mod
 
 ## Data Analysis
 
-Data is analysed in [`Analysis_results`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Analysis_results.ipynb).
+Data is analysed in [`Analysis_results.ipynb`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Analysis_results.ipynb).
 
 ## Environment
 
