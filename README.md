@@ -14,8 +14,11 @@ This work is based on the minimal social media simulation model [SimSom: A Simul
 
 
 ## Data
-Networks created for the simulation: TODO
-[Script to create network](workflow/make_network.py)
+Networks are created before the simulation runs. The script to create networks [`Generate_networks.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/data/Generate_networks.py) is called through the script `bash-nw`.  
+
+Configs (parameter combinations) are generated with [`make_final_config_friction.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/make_final_config_friction.py) and called in the workflow with 
+
+Configs are generated
 
 ## Environment
 

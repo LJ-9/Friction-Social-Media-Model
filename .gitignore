@@ -24,3 +24,6 @@ sbatch/*
 .DS_Store
 config_fivefive/*
 test/*
+Friction/data/networks/*
+Friction/old configs/*
+Friction/plots/old/*
