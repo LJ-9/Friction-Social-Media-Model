@@ -4,7 +4,7 @@ This repository contains code to reproduce the results in the paper *Friction In
 
 ```
   @article{Jahn23Friction,  
-    author = {{Jahn, Laura and Rendsvig, Rasmus~K., and Flammini, Alessandro, and Menczer, Filippo}},
+    author = {{Jahn, Laura and Rendsvig, Rasmus~K., and Flammini, Alessandro, and Menczer, Filippo, and Hendricks, Vincent}},
     title = {{Friction Interventions to Curb the Spread of Misinformation on Social Media}},  
     year = {2023},   
   }
