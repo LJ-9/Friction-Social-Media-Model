@@ -1,6 +1,6 @@
 # Friction Interventions to Curb the Spread of Misinformation on Social Media
 
-This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by Laura Jahn, Rasmus K. Rendsvig, Alessandro Flammini, Filippo Menczer and Vincent Hendricks.
+This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by [Laura Jahn](https://www.linkedin.com/in/laura-jahn/), [Rasmus K. Rendsvig](https://rends.dk), [Alessandro Flammini](https://cnets.indiana.edu/aflammin/), [Filippo Menczer](https://cnets.indiana.edu/fil/) and [Vincent Hendricks](https://comm.ku.dk/staff/?pure=en/persons/30701).
 
 ```
   @article{Jahn23Friction,  
