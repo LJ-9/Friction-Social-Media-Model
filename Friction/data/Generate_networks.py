@@ -7,7 +7,7 @@ import igraph as ig
 from statistics import mean
 
 # 2 TODO s in script, search for "TODO"
-# run on cluster with laurasbash-nw.sh
+# run on cluster with bash-nw.sh
 
 netnumber = 5000 # TODO: how many networks to generate?
 
@@ -104,7 +104,7 @@ def barabasi_albert_graph(n, m, seed=None, initial_graph=None):
         #print("add target nodes to repeated lists")
         # And the new node "source" has m edges to add to the list.
         
-        # repeated_nodes.extend([source] * m) # Laura: comment out so outgoing degree is not reflected in preferential sampling from repeated nodes 
+        # repeated_nodes.extend([source] * m) # comment out so outgoing degree is not reflected in preferential sampling from repeated nodes 
 
         source += 1
     return G

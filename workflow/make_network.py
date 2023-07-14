@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import igraph as ig
 
 import os
-ABS_PATH = '/N/u/baotruon/Carbonate/marketplace'
+ABS_PATH = '/.../marketplace' # ADD PATH
 DATA_PATH = os.path.join(ABS_PATH, 'follower_network')
 
 path = DATA_PATH

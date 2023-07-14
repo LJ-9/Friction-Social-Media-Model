@@ -1,8 +1,8 @@
 # Make the remaining 2 default network, delete when done
 
 # ABS_PATH = ''
-# ABS_PATH = '/nobackup/baotruon/marketplace'
-ABS_PATH = '/N/u/baotruon/Carbonate/marketplace'
+# ABS_PATH = '/.../marketplace'
+ABS_PATH = '/.../marketplace'
 DATA_PATH = os.path.join(ABS_PATH, "data")
 
 print(os.getcwd())

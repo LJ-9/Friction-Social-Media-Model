@@ -11,7 +11,7 @@ import infosys.utils as utils
 from collections import defaultdict
 cmap = cm.get_cmap('inferno', 10)
 
-ABS_PATH = '/N/slate/baotruon/marketplace'
+ABS_PATH = '/.../marketplace' # ADD PATH
 DATA_PATH = os.path.join(ABS_PATH, "data")
 # RES_PATH = os.path.join(ABS_PATH, "results")
 
@@ -116,8 +116,8 @@ def compare_targeting_heatmap(exp_type='vary_thetaphi', cell_type='quality', pre
 
 
 if __name__=="__main__":
-    PLOT_PATH = '/N/slate/baotruon/marketplace/plots/vary_thetaphi_2runs'
-    RES_PATH = '/N/slate/baotruon/marketplace/results/vary_thetaphi_2runs'
+    PLOT_PATH = '/.../marketplace/plots/vary_thetaphi_2runs' # ADD PATH
+    RES_PATH = '/.../marketplace/results/vary_thetaphi_2runs' # ADD PATH
     cell_type='quality'
     exp_type='vary_thetaphi'
     _, results1 = read_raw_data_singlerun(RES_PATH, exp_type=exp_type, file_prefix='none')

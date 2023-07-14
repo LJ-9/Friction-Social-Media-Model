@@ -152,7 +152,7 @@ if __name__=='__main__':
     # ABS_PATH = ''
     # saving_dir = os.path.join(ABS_PATH, "data_hi")
 
-    ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
+    ABS_PATH = '/Users/...*user*/Documents/Git/Marketplace-of-ideas'
 
     # exps results in newpipeline/results/final* (09052022)
     # saving_dir = os.path.join(ABS_PATH, "config_final")

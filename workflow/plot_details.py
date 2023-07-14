@@ -673,8 +673,8 @@ def save_entropy(nostrag_entropy, strag_entropy, fpath):
 
 if __name__=="__main__":
     logger.info('WORKING DIR: %s' %(os.getcwd()))
-    ABS_PATH = '/N/slate/baotruon/marketplace'
-    DATA_PATH = '/N/slate/baotruon/marketplace/data'
+    ABS_PATH = '/.../marketplace' # ADD PATH
+    DATA_PATH = '/.../marketplace/data' # ADD PATH
     
     config_fname= os.path.join(DATA_PATH, 'all_configs.json')
     

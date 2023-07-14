@@ -17,7 +17,7 @@ class Meme:
     # default phi = 1 is bot deception; >= 1: meme fitness higher than quality 
     # id: unique IDs
 
-    # Laura Nov 2022: sample quality and fitness (in paper: engagement) independently for human agents.
+    # Nov 2022: sample quality and fitness (in paper: engagement) independently for human agents.
     def get_values(self):
 
         if self.is_by_bot==1:

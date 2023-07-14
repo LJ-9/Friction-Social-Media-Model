@@ -224,7 +224,7 @@ if __name__=="__main__":
     # exp_name=sys.argv[1]
     # plot_folder=sys.argv[4]
     
-    ABS_PATH = '/N/slate/baotruon/marketplace'
+    ABS_PATH = '/.../marketplace' # ADD PATH
     DATA_PATH = os.path.join(ABS_PATH, "data")
     RES_PATH = os.path.join(ABS_PATH, "results")
 

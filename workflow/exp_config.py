@@ -125,7 +125,7 @@ if __name__=='__main__':
     # ABS_PATH = ''
     # saving_dir = os.path.join(ABS_PATH, "data_hi")
 
-    ABS_PATH = '/N/slate/baotruon/marketplace'
+    ABS_PATH = '/.../marketplace' # ADD PATH
     
     # exps in newpipeline/results
     # saving_dir = os.path.join(ABS_PATH, "data")
@@ -140,7 +140,7 @@ if __name__=='__main__':
     # make_exps(saving_dir, configs.default_net, configs.infosys_lowepsilon)
 
     # exp_type: convergence_rhoepsilon
-    # Results stored in /N/slate/baotruon/marketplace/newpipeline/results/convergence_criteria
+    # Results stored in /.../marketplace/newpipeline/results/convergence_criteria
     # saving_dir = os.path.join(ABS_PATH, "data_convergence")
     # make_exps(saving_dir, configs.default_net, configs.default_infosys)
 

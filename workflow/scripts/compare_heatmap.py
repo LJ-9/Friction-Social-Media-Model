@@ -11,7 +11,7 @@ import infosys.utils as utils
 from collections import defaultdict
 from infosys.config_values import ABS_PATH, THETA, GAMMA, PHI_LIN, BETA
 import workflow.plots as infosysplot
-# ABS_PATH = '/N/slate/baotruon/marketplace'
+# ABS_PATH = '/.../marketplace' # ADD PATH
 ABS_PATH=''
 DATA_PATH = os.path.join(ABS_PATH, "data")
 RES_PATH = os.path.join(ABS_PATH, "newpipeline")

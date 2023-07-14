@@ -2,7 +2,7 @@ import os
 import numpy as np 
 
 # ABS_PATH = ''
-ABS_PATH = '/N/slate/baotruon/marketplace'
+ABS_PATH = '/.../marketplace' # ADD PATH
 DATA_PATH = os.path.join(ABS_PATH, "data")
 follower_network = 'follower_network.gml'
 mode = 'igraph'
@@ -13,7 +13,6 @@ GAMMA = sorted(list(10.0**(np.arange(-4, 0))) + list(5*(10.0**(np.arange(-4, 0))
 
 # Convergence criteria
 """ Values used for first exploration of rho epsilon
-/N/slate/baotruon/marketplace/newpipeline/results/convergence_criteria
 oneminusrho = sorted(list(10.0**(np.arange(-5, 0))))
 # [1e-05, 0.0001, 0.001, 0.01, 0.1]
 RHO = [1-val for val in oneminusrho]
@@ -21,7 +20,6 @@ EPSILON = sorted(list(10.0**(np.arange(-5, 0))))
 """
 
 """ Values used for 2nd exploration of rho epsilon
-/N/slate/baotruon/marketplace/newpipeline/results/convergence_largerho
 RHO = [0.125, 0.25, 0.5, 0.8]
 EPSILON = sorted(list(10.0**(np.arange(-5, -2))))
 # [1e-05, 0.0001, 0.001]

@@ -1,6 +1,6 @@
 # Friction Interventions to Curb the Spread of Misinformation on Social Media
 
-This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by [Laura Jahn](https://www.linkedin.com/in/laura-jahn/), [Rasmus K. Rendsvig](https://rends.dk), [Alessandro Flammini](https://cnets.indiana.edu/aflammin/), [Filippo Menczer](https://cnets.indiana.edu/fil/) and [Vincent Hendricks](https://comm.ku.dk/staff/?pure=en/persons/30701).
+This repository contains code to reproduce the results in the paper *Friction Interventions to Curb the Spread of Misinformation on Social Media* by [Laura Jahn](https://www.linkedin.com/in/laura-jahn/), [Rasmus K. Rendsvig](https://rends.dk), [Alessandro Flammini](https://cnets.indiana.edu/aflammin/), [Filippo Menczer](https://cnets.indiana.edu/fil/) and [Vincent Hendricks](https://comm.ku.dk/staff/?pure=en/persons/30701). 
 
 ```
   @article{Jahn23Friction,  
@@ -47,10 +47,11 @@ The results in the paper are based on averages across multiple simulation runs. 
 
 Run minimal example with `workflow/example/run_simulation.py`
 
+<!---
 How to multiple experiments:
 - run `workflow/scripts/make_finalconfig.py` (this creates config files for different sets of param combination you want to test)
 - run `workflow/final_rules/<exp_type>.smk` (exp_type: [strategies_beta, vary_thetabeta, etc.])
-
+--->
 
 
 

@@ -87,7 +87,7 @@ def make_exps(saving_dir, default_infosys_config):
 
 if __name__=='__main__':
 
-    ABS_PATH = '/Users/laurajahn/Documents/Git/Marketplace-of-ideas'
+    ABS_PATH = '/Users/...*user*/Documents/Git/Marketplace-of-ideas'
 
     saving_dir = os.path.join(ABS_PATH, "Friction/config_friction_Dec30_random_rho99_eps0.00001_FINAL")
     make_exps(saving_dir, configs.infosys_default)

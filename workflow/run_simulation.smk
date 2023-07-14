@@ -2,7 +2,7 @@ import os
 import numpy as np
 import math
 import json 
-# ABS_PATH = "/N/u/baotruon/Carbonate/marketplace/igraphvsnx"
+# ABS_PATH = "/.../marketplace/igraphvsnx" # ADD PATH
 ABS_PATH = ''
 DATA_PATH = os.path.join(ABS_PATH, "data")
 mode = 'igraph'

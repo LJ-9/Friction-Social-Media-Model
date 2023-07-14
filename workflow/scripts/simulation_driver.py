@@ -15,7 +15,7 @@ import os
 import copy
 import gzip 
 
-# ABS_PATH = "/N/u/baotruon/Carbonate/marketplace"
+# ABS_PATH = "/.../marketplace" # ADD PATH
 ABS_PATH = ''
 DATA_PATH = os.path.join(ABS_PATH, "data")
 # TODO: save network as .gml.gz, keep only friend relationships

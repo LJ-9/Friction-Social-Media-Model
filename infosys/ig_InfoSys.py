@@ -298,7 +298,7 @@ class InfoSystem:
     def measure_kendall_tau(self):
         # calculate discriminative power of system
         # Call only after self._return_all_meme_info() is called
-        # Laura Nov 2022: newly written function to account for ties when producing ranking1 and ranking2
+        # Nov 2022: newly written function to account for ties when producing ranking1 and ranking2
         qualities = [meme['quality'] for meme in self.meme_dict]
         unique_qualities = set(qualities) 
 
@@ -338,23 +338,6 @@ class InfoSystem:
         return tau, p_value # tau in [-1,1]
 
    
-    #def measure_kendall_tau(self):
-        # calculate discriminative power of system
-        # Call only after self._return_all_meme_info() is called
-        # Laura: This function does not account for ties when producing ranking 1 and ranking2
-       # quality_ranked = sorted(self.meme_dict, key=lambda m: m['quality'])
-       # for ith, elem in enumerate(quality_ranked):
-        #    elem.update({'qual_th':ith})
-
-       # share_ranked = sorted(quality_ranked, key=lambda m: m['human_shares'])
-       # for ith, elem in enumerate(share_ranked):
-      #      elem.update({'share_th':ith})
-
-       # idx_ranked = sorted(share_ranked, key=lambda m: m['id'])
-       # ranking1 = [meme['qual_th'] for meme in idx_ranked]
-       # ranking2 = [meme['share_th'] for meme in idx_ranked]
-      #  tau, p_value = utils.kendall_tau(ranking1, ranking2)
-       # return tau, p_value
 
     def measure_average_quality(self):
         # calculate average quality of memes in system

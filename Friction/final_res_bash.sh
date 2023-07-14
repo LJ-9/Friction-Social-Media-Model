@@ -1,6 +1,6 @@
 #!/bin/bash
 #####  Constructed by HPC everywhere #####
-#SBATCH --mail-user=jahnla@iu.edu
+#SBATCH --mail-user=
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=40
@@ -9,10 +9,10 @@
 #SBATCH --job-name=finalrun
 
 ######  Module commands #####
-source /N/u/jahnla/Quartz/miniconda3/etc/profile.d/conda.sh 
+source /N/u/*user*/Quartz/miniconda3/etc/profile.d/conda.sh 
 conda activate snakemake
 
 ######  Job commands go below this line #####
-cd /N/u/jahnla/Quartz/marketplace/Friction
+cd /N/u/*user*/Quartz/marketplace/Friction
 echo '###### RUNDec28 ######'
 snakemake --nolock --cores 40

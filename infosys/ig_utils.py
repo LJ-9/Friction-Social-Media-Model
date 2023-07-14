@@ -33,7 +33,7 @@ def random_walk_network(net_size, p=0.5, k_out=3, seed=100):
         target = random.choice(G.vs)
         friends = [target]
         n_random_friends = 0
-        for _ in range(k_out - 1): #bao: why kout-1 and not kout?
+        for _ in range(k_out - 1): 
             if random.random() < p:
                 n_random_friends += 1
         
