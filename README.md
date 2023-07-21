@@ -18,7 +18,7 @@ This work is based on the minimal social media simulation model [SimSom: A Simul
 To reproduce the results of the paper on friction, scripts for data generation (networks), running the simulation, and data analysis can be found in [`Friction/`](https://github.com/LJ-9/Friction-Social-Media-Model/tree/master/Friction)
 
 
-## Data 
+## Data
 Networks are created before the simulation runs. The script to create networks [`Generate_networks.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/data/Generate_networks.py) is called through the script `bash-nw`.  
 
 Configs (parameter combinations) are generated with [`make_final_config_friction.py`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/make_final_config_friction.py).
@@ -27,31 +27,27 @@ Configs (parameter combinations) are generated with [`make_final_config_friction
 
 ## Running the simulation
 
+### Environment
 
-Activate virtualenv and run `pip install -e .` for the module imports to work correctly.
+Our code is based on **Python3.6+**.
+Activate virtualenv with the required packages and run `pip install -e .` for the module imports to work correctly.
+We use `conda`, a package manager to manage the environments. Please make sure you have [conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html#regular-installation) or [mamba](https://mamba.readthedocs.io/en/latest/installation.html#) installed on your machine.
 
 A snakemake file [`Snakefile`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Snakefile) controls the workflow and is called in  [`final_res_bash.sh`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/final_res_bash.sh) to start the simulation. Outputs are saved to `Friction/results` and `Friction/verbose`.
 
+Installation times for packages and package managers are standard and shouldn't be a problem to a normal computer, and available to all standard operating systems. Runtime varies depending on parameters, and is faster when the simulation is deployed on multiple cores (as specified in bash and snakefiles).
+
 ## Data Analysis
 
-Data is analysed in [`Analysis_results.ipynb`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Analysis_results.ipynb).
+Data is analysed in [`Analysis_results.ipynb`](https://github.com/LJ-9/Friction-Social-Media-Model/blob/master/Friction/Analysis_results.ipynb). 
 
-## Environment
-
-Our code is based on **Python3.6+**.
 
 ## Notes
 
-The results in the paper are based on averages across multiple simulation runs. To reproduce those results, we suggest running the simulations in parallel, for example on a cluster.
+The results in the paper are based on averages across multiple simulation runs. To reproduce those results, we suggest running the simulations in parallel, for example on a cluster. This decreases runtime significantly. Runtime increases with network size, number of runs, and convergence/stability parameters as described in the paper.
 
 
-Run minimal example with `workflow/example/run_simulation.py`
-
-<!---
-How to multiple experiments:
-- run `workflow/scripts/make_finalconfig.py` (this creates config files for different sets of param combination you want to test)
-- run `workflow/final_rules/<exp_type>.smk` (exp_type: [strategies_beta, vary_thetabeta, etc.])
---->
+Run minimal example with `workflow/example/run_simulation.py` with the specified test follower network. 
 
 
 
